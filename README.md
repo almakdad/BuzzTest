@@ -14,8 +14,7 @@ The requirement for this one is pretty simple:
 - the banner can also be dragged interactively, and the upcoming reservation is visible in the dragged view (e.g. exactly what Apple Music does)
 - whichever tab is selected, the banner should be visible. If a controller gets presented modally, the banner should NOT be visible (matching the implicit real life analogy that modals slide "over" the main view)
 
-Here's a sample GIF from our current app:
-![Dining mode banner](https://d1zjcuqflbd5k.cloudfront.net/files/acc_225157/tgCj?response-content-disposition=attachment;%20filename=Screen%20Capture%20on%202016-12-02%20at%2016-30-28.gif&Expires=1480726021&Signature=U6zXG9fnqvuxBJijX5N6zjqVJL3NZpxNlD3dtQsC1RFc~cvwPw9vduW1tiyB3xeZpGga0WFz0LZE3qyYXvGdzDIA5GEGBLAZ~YOd4bNrp6eupfwlCk7~Mi2g-ldicE~qQ0BoqATay8Y5~vJCORZRN6xIqKzY9tQC~G4NPkpwsLk_&Key-Pair-Id=APKAJTEIOJM3LSMN33SA)
+Here's a sample GIF from our current app: httphttp://opentable.d.pr/aZ8Q/tdvdDsZ2
 
 ### Dining mode
 This is a typical "mix and match" content driven screen, laying out "cards" vertically, where not all of the content is always available:
@@ -31,8 +30,7 @@ This is a typical "mix and match" content driven screen, laying out "cards" vert
 	* for each displayed snippet, we want to display: the photo, the dish name and the snippet along with its highlight. You're free to pick whatever method for the highlight (bold, color, underline etc.)
 	* If you feel like it and have enough time, tapping anywhere in the card expands the card full screen. If you don't have time for it, that's ok, but I'd love it if you could explain an approach to implement this kind of transition, and the problems you'd face in the process.
 
-Here's a sample GIF from our current app:
-![Dining mode](https://d1zjcuqflbd5k.cloudfront.net/files/acc_225157/tgCj?response-content-disposition=inline;%20filename=Screen%20Capture%20on%202016-12-02%20at%2016-30-28.gif&Expires=1480725974&Signature=AZByt90WX1pPQihkTfraK6w1xvEeY9zSy-bm-enF5T0tHJ9Z0Bo~fga33KKNcV8isjojTtGqg-MI2~KTFTCjFuk7VQYw-FOPx84aAdhsHsuHAf4jCZ400oPmpelkgKZxwx24yCLY9-Mj4ByJaYf0srdrPQEmyil6GlX~P~jobDg_&Key-Pair-Id=APKAJTEIOJM3LSMN33SA)
+Here's a sample GIF from our current app: http://opentable.d.pr/tgCj/5ohCOmky
 
 ### General Instructions:
 - this isn't a visual design exercise, so you don't have to worry about that piece. Subtle use of background colors helps a lot with debugging and differentiating the views, so feel free to use that technique freely. I've included GIFs from our own app, as a reference, you don't have to follow that visual design
