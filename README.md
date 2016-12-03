@@ -13,6 +13,8 @@ The requirement for this one is pretty simple:
 - tapping the banner expands the upcoming reservation view controller full screen
 - the banner can also be dragged interactively, and the upcoming reservation is visible in the dragged view (e.g. exactly what Apple Music does)
 - whichever tab is selected, the banner should be visible. If a controller gets presented modally, the banner should NOT be visible (matching the implicit real life analogy that modals slide "over" the main view)
+- technically, we'd want the viewcontrollers in the tab bar to see their content inset/frame updated so their content isn't hidden by the dining mode bar. This is out of scope (and to be honnest, a fairly hard problem we don't fully address ourselves).
+- if you can't make it interactive, and would rather implement the dining mode below, that's cool, just try and document what kind of problems you ran into, and what options you have to solve them. A non perfect solution is better than nothing though, since you're working in a limited time, it's interesting to see where you ended up with the feature.
 
 Here's a sample GIF from our current app: http://opentable.d.pr/aZ8Q/tdvdDsZ2
 
