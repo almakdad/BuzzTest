@@ -72,9 +72,9 @@ class ReservationAssembler {
 		return Snippet(content: content, range: range, highlights: highlights)
 	}
 	
-	private func createDishes(_ dtos: [[String : Any]]?) -> [Dish]? {
+	private func createDishes(_ dtos: [[String : Any]]?) -> [Dish] {
 		guard let dtos = dtos else {
-			return nil
+			return []
 		}
 		
 		return dtos.flatMap { (dto) -> Dish? in
@@ -84,7 +84,7 @@ class ReservationAssembler {
 				photos.count > 0,
 				let snippet = self.createSnippet(dto["snippet"] as? [String : Any]) else {
 					return nil
-			}		
+			}
 			return Dish(id: id, name: name, photos: photos, snippet: snippet)
 		}
 	}
@@ -145,11 +145,10 @@ class ReservationAssembler {
 			let zip = dto["zip"] as? String,
 			let country = dto["country"] as? String,
 			let latitude = dto["latitude"] as? Double,
-			let longitude = dto["longitude"] as? Double,
-			let dishes = self.createDishes(dto["dishes"] as? [[String : Any]]) else {
+			let longitude = dto["longitude"] as? Double else {
 				return nil
 		}
-		
+		let dishes = self.createDishes(dto["dishes"] as? [[String : Any]])
 		let profile = self.createPhoto(dto["profilePhoto"] as? [String : Any])
 		return Restaurant(id: id,
 		                  name: name,

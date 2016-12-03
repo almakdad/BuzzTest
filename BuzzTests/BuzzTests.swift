@@ -21,13 +21,8 @@ class BuzzTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testAssembler() {
-		let url = Bundle.main.url(forResource: "api.v1.user.reservation.GET", withExtension:"json")
+    func testFullReservation() {
+		let url = Bundle.main.url(forResource: "FullReservation", withExtension:"json")
 		let data = try! Data(contentsOf:url!, options: Data.ReadingOptions.uncached)
 		let json = try! JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
 		
@@ -37,11 +32,44 @@ class BuzzTests: XCTestCase {
 		}
 		
 		XCTAssertNotNil(reservation.restaurant.profile)
-		XCTAssertNotEqual(reservation.restaurant.dishes.count, 0)
+		XCTAssertTrue(reservation.restaurant.dishes.count == 3)
 		
 		let firstDish = reservation.restaurant.dishes[0]
 		XCTAssertNotEqual(firstDish.photos.count, 0)
 		XCTAssertNotEqual(firstDish.snippet.highlights.count, 0)
     }
+	
+	func testTwoDishes() {
+		let url = Bundle.main.url(forResource: "2dishes", withExtension:"json")
+		let data = try! Data(contentsOf:url!, options: Data.ReadingOptions.uncached)
+		let json = try! JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
+		
+		guard let reservation = ReservationAssembler().createReservation(json) else {
+			XCTFail("reservation was not built")
+			return
+		}
+		
+		XCTAssertNotNil(reservation.restaurant.profile)
+		XCTAssertEqual(reservation.restaurant.dishes.count, 2)
+		
+		let firstDish = reservation.restaurant.dishes[0]
+		XCTAssertNotEqual(firstDish.photos.count, 0)
+		XCTAssertNotEqual(firstDish.snippet.highlights.count, 0)
+	}
+	
+	func testPartialReservation() {
+		let url = Bundle.main.url(forResource: "PartialReservation", withExtension:"json")
+		let data = try! Data(contentsOf:url!, options: Data.ReadingOptions.uncached)
+		let json = try! JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
+		
+		guard let reservation = ReservationAssembler().createReservation(json) else {
+			XCTFail("reservation was not built")
+			return
+		}
+		
+		XCTAssertNotNil(reservation.restaurant.profile)
+		XCTAssertEqual(reservation.restaurant.dishes.count, 0)
+	}
+
 	
 }
