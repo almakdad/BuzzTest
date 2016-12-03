@@ -14,7 +14,7 @@ The requirement for this one is pretty simple:
 - the banner can also be dragged interactively, and the upcoming reservation is visible in the dragged view (e.g. exactly what Apple Music does)
 - whichever tab is selected, the banner should be visible. If a controller gets presented modally, the banner should NOT be visible (matching the implicit real life analogy that modals slide "over" the main view)
 
-Here's a sample GIF from our current app: httphttp://opentable.d.pr/aZ8Q/tdvdDsZ2
+Here's a sample GIF from our current app: http://opentable.d.pr/aZ8Q/tdvdDsZ2
 
 ### Dining mode
 This is a typical "mix and match" content driven screen, laying out "cards" vertically, where not all of the content is always available:
