@@ -91,9 +91,7 @@ class AccessoryContainerViewController: UIViewController {
         }
         
         if animated {
-            UIView.animate(withDuration: 0.3, animations: animationBlock, completion: { _ in
-                self.view.setNeedsUpdateConstraints()
-            })
+            UIView.animate(withDuration: 0.3, animations: animationBlock, completion: nil)
         } else {
             animationBlock()
         }
