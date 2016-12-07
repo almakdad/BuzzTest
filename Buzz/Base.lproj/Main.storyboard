@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Accessory Tab Bar Controller-->
         <scene sceneID="oQd-Do-FEj">
             <objects>
-                <tabBarController id="727-T4-Ou2" sceneMemberID="viewController">
+                <tabBarController id="727-T4-Ou2" customClass="AccessoryTabBarController" customModule="Buzz" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="fX3-6F-PEB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
