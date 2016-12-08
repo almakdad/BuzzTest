@@ -20,7 +20,6 @@ class AccessoryTabBarController: UITabBarController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,7 +44,7 @@ class AccessoryTabBarController: UITabBarController {
         
         accessoryContanerViewController.willMove(toParentViewController: self)
         addChildViewController(accessoryContanerViewController)
-        view.addSubview(acvc.view)
+        view.insertSubview(acvc.view, belowSubview: tabBar)
         accessoryContanerViewController.didMove(toParentViewController: self)
         
         showAccessoryGestureRecognizer.addTarget(self, action:#selector(AccessoryTabBarController.handleAccessoryTransition(pan:)))
@@ -108,6 +107,8 @@ class AccessoryTabBarController: UITabBarController {
     func setAccessoryViewPresented(presented: Bool, animated: Bool) {
         let acvc = accessoryContanerViewController
         
+        let topBarLength = self.topLayoutGuide.length
+        
         // Tab Bar Geometry
         let tabBarHeight = tabBar.bounds.height
         
@@ -122,16 +123,17 @@ class AccessoryTabBarController: UITabBarController {
         let pullViewHeight = CGFloat(50.0)
         
         var accessoryViewY = tabBarY - pullViewHeight
-        var accessoryViewHeight = pullViewHeight
+        var accessoryViewHeight = view.frame.height
         if presented {
-            accessoryViewY = view.frame.minY
-            accessoryViewHeight = view.frame.height
+            accessoryViewY = view.frame.minY + topBarLength
+            accessoryViewHeight = view.frame.height - topBarLength
         }
 
         let accessoryViewEndFrame = CGRect(x: view.frame.minX, y: accessoryViewY, width: view.bounds.width, height: accessoryViewHeight)
         
         // Animation
         let animationBlock = {
+            
             acvc.view.frame = accessoryViewEndFrame
             self.tabBar.frame = tabBarEndFrame
             acvc.setPullViewVisible(visible: !presented, animated: true)

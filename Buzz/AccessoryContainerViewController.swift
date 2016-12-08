@@ -38,27 +38,29 @@ class AccessoryContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.orange
+        
         view.clipsToBounds = true
         
-        view.addSubview(navBar)
         view.addSubview(contentView)
-        
-        installConstraints()
+        view.insertSubview(navBar, aboveSubview: contentView)
         
         pullView.backgroundColor = UIColor.red
         setPullViewVisible(visible: true, animated: false)
+        
+        installConstraints()
     }
-    
+
     func installConstraints() {
         navBar.translatesAutoresizingMaskIntoConstraints = false
         
-        navBar.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        navBar.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         navBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         navBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
         
-        contentView.topAnchor.constraint(equalTo: navBar.bottomAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -77,9 +79,9 @@ class AccessoryContainerViewController: UIViewController {
                 self.pullView.translatesAutoresizingMaskIntoConstraints = false
                 
                 self.pullView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-                self.pullView.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
                 self.pullView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
                 self.pullView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+                self.pullView.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
                 
                 if let avc = self.accessoryViewController as? AccessoryContainerViewContent {
                     self.pullView.label.text = avc.titleForPullView()
